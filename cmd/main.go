@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/web3foru/computer-science-group-golang/internal/application/src/lista_ligada"
+	"github.com/web3foru/computer-science-group-golang/internal/application/src/data_structures/lista_ligada"
 )
 
 func main() {

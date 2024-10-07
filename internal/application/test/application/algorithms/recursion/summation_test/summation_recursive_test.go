@@ -1,7 +1,7 @@
 package summation_test
 
 import (
-	"github.com/web3foru/computer-science-group-golang/internal/application/src/recursion/summation"
+	"github.com/web3foru/computer-science-group-golang/internal/application/src/algorithms/recursion/summation"
 	"testing"
 )
 

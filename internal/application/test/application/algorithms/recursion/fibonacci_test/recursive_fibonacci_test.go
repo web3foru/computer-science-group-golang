@@ -1,7 +1,7 @@
 package fibonacci_test
 
 import (
-	"github.com/web3foru/computer-science-group-golang/internal/application/src/recursion/fibonacci"
+	"github.com/web3foru/computer-science-group-golang/internal/application/src/algorithms/recursion/fibonacci"
 	"testing"
 )
 

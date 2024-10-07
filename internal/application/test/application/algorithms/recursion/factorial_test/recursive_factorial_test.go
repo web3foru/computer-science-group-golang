@@ -1,7 +1,7 @@
 package factorial_test
 
 import (
-	"github.com/web3foru/computer-science-group-golang/internal/application/src/recursion/factorial"
+	"github.com/web3foru/computer-science-group-golang/internal/application/src/algorithms/recursion/factorial"
 	"testing"
 )
 
