@@ -2,9 +2,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/web3foru/computer-science-group-golang/ListaLigadaSimple"
+	"github.com/web3foru/computer-science-group-golang/internal/application/ListaLigadaSimple"
 )
-
 
 func main() {
 	// Crear una instancia de ListaLigada
