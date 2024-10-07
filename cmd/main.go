@@ -2,12 +2,12 @@ package main
 
 import (
 	"fmt"
-	"github.com/web3foru/computer-science-group-golang/internal/application/src/ListaLigadaSimple"
+	"github.com/web3foru/computer-science-group-golang/internal/application/src/lista_ligada"
 )
 
 func main() {
 	// Crear una instancia de ListaLigada
-	lista := ListaLigadaSimple.NuevaLista()
+	lista := lista_ligada.NuevaLista()
 
 	// Verificar si la lista está vacía
 	fmt.Println("¿La lista está vacía?", lista.EstaVacio()) // Output: true
