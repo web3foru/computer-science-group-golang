@@ -1,11 +1,11 @@
 package summation_test
 
 import (
-	"github.com/web3foru/computer-science-group-golang/internal/application/recursion/summation"
+	"github.com/web3foru/computer-science-group-golang/internal/application/src/recursion/summation"
 	"testing"
 )
 
-func TestSum(t *testing.T) {
+func TestRecursiveSummation(t *testing.T) {
 	result := summation.RecursiveSummation(10)
 	expected := 55
 	if result != expected {

@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/web3foru/computer-science-group-golang/internal/application/ListaLigadaSimple"
+	"github.com/web3foru/computer-science-group-golang/internal/application/src/ListaLigadaSimple"
 )
 
 func main() {
