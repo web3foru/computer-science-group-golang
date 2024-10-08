@@ -6,8 +6,8 @@ import (
 )
 
 func TestBinarySearch(t *testing.T) {
-	arr := [...]int{1, 2, 4, 5, 8, 12}
-	result := binary_search.BinarySearch(arr[:], 4)
+	arr := []int{1, 2, 4, 5, 8, 12}
+	result := binary_search.BinarySearch(arr, 4)
 	expected := 2
 	if result != expected {
 		t.Errorf("expected %d, got %d", expected, result)
