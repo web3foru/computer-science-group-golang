@@ -1,9 +1,8 @@
-package ListaLigadaSimple
+package lista_ligada
 
 import (
 	"fmt"
 )
-
 
 func (n *Nodo) String() string {
 	return fmt.Sprintf("Nodo(%v)", n.data)
@@ -28,8 +27,7 @@ func (ll *ListaLigada) String() string {
 	return fmt.Sprintf("ListaLigada(%v)", nodos)
 }
 
-
-func (ll *ListaLigada) AgregarFinal(data interface{}){
+func (ll *ListaLigada) AgregarFinal(data interface{}) {
 	nuevoNodo := &Nodo{data: data, siguiente: nil}
 	if ll.EstaVacio() {
 		ll.nodoCabeza = nuevoNodo
@@ -45,15 +43,15 @@ func (ll *ListaLigada) AgregarFinal(data interface{}){
 	ll.longitud++
 }
 
-func (ll *ListaLigada) AgregarInicio(data interface{}){
+func (ll *ListaLigada) AgregarInicio(data interface{}) {
 	nuevoNodo := &Nodo{data: data, siguiente: nil}
 	nuevoNodo.siguiente = ll.nodoCabeza
 	ll.nodoCabeza = nuevoNodo
 	ll.longitud++
-	fmt.Println("Agregado al inicio %s", nuevoNodo)
+	fmt.Printf("Agregado al inicio %s", nuevoNodo)
 }
 
-func (ll *ListaLigada) InsertarLuegoDe(dataObjetivo interface{}, data interface{}) bool{
+func (ll *ListaLigada) InsertarLuegoDe(dataObjetivo interface{}, data interface{}) bool {
 	nodoActual := ll.nodoCabeza
 	for nodoActual != nil {
 		if nodoActual.data == dataObjetivo {
@@ -61,7 +59,7 @@ func (ll *ListaLigada) InsertarLuegoDe(dataObjetivo interface{}, data interface{
 			nuevoNodo.siguiente = nodoActual.siguiente
 			nodoActual.siguiente = nuevoNodo
 			ll.longitud++
-			fmt.Println("Insertado %s luego de %s", nuevoNodo, nodoActual)
+			fmt.Printf("Insertado %s luego de %s", nuevoNodo, nodoActual)
 			return true
 		}
 		nodoActual = nodoActual.siguiente
@@ -76,10 +74,10 @@ func (ll *ListaLigada) Eliminar(data interface{}) bool {
 		if nodoActual.data == data {
 			if nodoAnterior == nil {
 				nodoAnterior.siguiente = nodoActual.siguiente
-				fmt.Println("Eliminado %s", nodoActual)
+				fmt.Printf("Eliminado %s", nodoActual)
 			} else {
 				ll.nodoCabeza = nodoActual.siguiente
-				fmt.Println("Eliminado %s", nodoActual)
+				fmt.Printf("Eliminado %s", nodoActual)
 			}
 			ll.longitud--
 			return true
@@ -87,7 +85,6 @@ func (ll *ListaLigada) Eliminar(data interface{}) bool {
 		nodoAnterior = nodoActual
 		nodoActual = nodoActual.siguiente
 	}
-	fmt.Println("No se encontró %s", data)
+	fmt.Printf("No se encontró %s", data)
 	return false
 }
-
