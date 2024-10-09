@@ -19,13 +19,9 @@ func (simpleLinkedList *SimpleLinkedList) RemoveNode(data interface{}) bool {
 		if currentNode.data == data {
 			return simpleLinkedList.disconnectNodes(currentNode, previousNode)
 		} else {
-			updateNextElements(currentNode, previousNode)
+			previousNode = previousNode.next
+			currentNode = currentNode.next
 		}
 	}
 	return false
-}
-
-func updateNextElements(previousNode *SimpleNode, currentNode *SimpleNode) {
-	previousNode = currentNode
-	currentNode = currentNode.next
 }
