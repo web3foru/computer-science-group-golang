@@ -5,18 +5,22 @@ import (
 	"github.com/web3foru/computer-science-group-golang/internal/application/src/data_structures/linked_list"
 )
 
-func (queue *QueueStructure) Enqueue(value interface{}) bool {
-	newNode := linked_list.CreateNewNode(value)
-	queue.items.AddNodeAtTheEnd(newNode)
+func CreateQueueAsSimpleLinkedList() QueueAsLinkedList {
+	linkedListItems := linked_list.NewLinkedList()
+	return QueueAsLinkedList{items: linkedListItems, size: 0}
+}
+
+func (queue *QueueAsLinkedList) Enqueue(value interface{}) bool {
+	queue.items.AddNodeAtTheEnd(value)
 	queue.size++
 	return true
 }
 
-func (queue *QueueStructure) Size() int {
+func (queue *QueueAsLinkedList) Size() int {
 	return queue.size
 }
 
-func (queue *QueueStructure) Dequeue() interface{} {
+func (queue *QueueAsLinkedList) Dequeue() interface{} {
 	if queue.IsEmpty() {
 		return nil
 	} else {
@@ -25,7 +29,7 @@ func (queue *QueueStructure) Dequeue() interface{} {
 	}
 }
 
-func (queue *QueueStructure) Peek() interface{} {
+func (queue *QueueAsLinkedList) Peek() interface{} {
 	if queue.IsEmpty() {
 		return nil
 	} else {
@@ -33,7 +37,7 @@ func (queue *QueueStructure) Peek() interface{} {
 	}
 }
 
-func (queue *QueueStructure) IsEmpty() bool {
+func (queue *QueueAsLinkedList) IsEmpty() bool {
 	if queue.Size() == 0 {
 		fmt.Sprintln("The Queue is empty")
 		return true

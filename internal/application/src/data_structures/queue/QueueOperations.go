@@ -5,4 +5,5 @@ type QueueOperations interface {
 	Dequeue() interface{}
 	Peek() interface{}
 	Size() int
+	IsEmpty() bool
 }
