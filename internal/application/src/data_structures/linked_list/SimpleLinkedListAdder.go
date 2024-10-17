@@ -18,6 +18,23 @@ func (simpleLinkedList *SimpleLinkedList) AddNodeAtTheEnd(data interface{}) {
 	simpleLinkedList.size++
 }
 
+func (simpleLinkedList *SimpleLinkedList) InsertAfter(data interface{}, newNodeData interface{}) bool {
+
+	currentNode := simpleLinkedList.firstNode
+	for !simpleLinkedList.isTheEndOfTheList(currentNode) {
+		if currentNode.data == data {
+			nextNode := currentNode.next
+			newNode := CreateNewNode(newNodeData)
+			currentNode.next = newNode
+			newNode.next = nextNode
+			simpleLinkedList.size++
+			return true
+		}
+		currentNode = currentNode.next
+	}
+	return false
+}
+
 func (simpleLinkedList *SimpleLinkedList) updateElementsAtTheEnd(newNode *SimpleNode) {
 	lastNode := simpleLinkedList.goToTheEndOfList()
 	if lastNode != nil {
