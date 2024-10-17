@@ -25,3 +25,10 @@ func (simpleLinkedList *SimpleLinkedList) RemoveNode(data interface{}) bool {
 	}
 	return false
 }
+
+func (simpleLinkedList *SimpleLinkedList) ReturnFirstNodeAndErase() *SimpleNode {
+	currentNode := simpleLinkedList.firstNode
+	simpleLinkedList.firstNode = currentNode.next
+	simpleLinkedList.size--
+	return currentNode
+}
