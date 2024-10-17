@@ -1,16 +1,18 @@
 package queue
 
-import "github.com/web3foru/computer-science-group-golang/internal/application/src/data_structures/queue"
+import (
+	"github.com/web3foru/computer-science-group-golang/internal/application/src/data_structures/queue/linkedlist"
+)
 
-func GetAnEmptyQueue() queue.QueueAsLinkedList {
-	return queue.CreateQueueAsSimpleLinkedList()
+func GetAnEmptyQueue() linkedlist.QueueAsLinkedList {
+	return linkedlist.CreateQueueAsSimpleLinkedList()
 }
 
-func GetAQueueWithTwoItems() queue.QueueAsLinkedList {
+func GetAQueueWithTwoItems() linkedlist.QueueAsLinkedList {
 	return GetAQueueWithNItems(2)
 }
 
-func GetAQueueWithNItems(numberOfItems int) queue.QueueAsLinkedList {
+func GetAQueueWithNItems(numberOfItems int) linkedlist.QueueAsLinkedList {
 	newQueue := GetAnEmptyQueue()
 	for i := 0; i < numberOfItems; i++ {
 		newQueue.Enqueue(i)

@@ -36,7 +36,7 @@ func (simpleLinkedList *SimpleLinkedList) InsertAfter(data interface{}, newNodeD
 }
 
 func (simpleLinkedList *SimpleLinkedList) updateElementsAtTheEnd(newNode *SimpleNode) {
-	lastNode := simpleLinkedList.goToTheEndOfList()
+	lastNode := simpleLinkedList.GoToTheEndOfList()
 	if lastNode != nil {
 		lastNode.next = newNode
 	} else {

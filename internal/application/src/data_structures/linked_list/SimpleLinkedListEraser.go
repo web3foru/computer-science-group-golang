@@ -32,3 +32,17 @@ func (simpleLinkedList *SimpleLinkedList) ReturnFirstNodeAndErase() *SimpleNode 
 	simpleLinkedList.size--
 	return currentNode
 }
+
+func (simpleLinkedList *SimpleLinkedList) ReturnLastNodeAndErase() *SimpleNode {
+	if simpleLinkedList.IsEmpty() {
+		return nil
+	} else {
+		previous, lastNode := simpleLinkedList.GetTheLastTwoNodes()
+		if lastNode != nil {
+			previous.next = nil
+			simpleLinkedList.size--
+		}
+		return lastNode
+	}
+
+}
