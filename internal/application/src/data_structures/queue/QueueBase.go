@@ -1,6 +1,6 @@
 package queue
 
 type QueueBase struct {
-	items interface{}
+	items *interface{}
 	size  int
 }

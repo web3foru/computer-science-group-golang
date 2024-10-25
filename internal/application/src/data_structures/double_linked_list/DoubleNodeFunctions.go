@@ -6,6 +6,10 @@ func (node *DoubleNode) String() string {
 	return fmt.Sprintf("%v", node.data)
 }
 
+func (node *DoubleNode) GetValue() interface{} {
+	return node.data
+}
+
 func (node *DoubleNode) GetNextNode() *DoubleNode {
 	return node.next
 }

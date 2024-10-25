@@ -1,6 +1,6 @@
-package queue
+package array
 
-func CreateAnQueAsAnArray() QueueAsAnArray {
+func CreateAQueAsAnArray() QueueAsAnArray {
 	var array []interface{}
 	return QueueAsAnArray{
 		items: array,

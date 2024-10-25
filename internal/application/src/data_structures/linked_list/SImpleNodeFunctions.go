@@ -1,9 +1,15 @@
 package linked_list
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func (simpleNode *SimpleNode) String() string {
 	return fmt.Sprintf("%v", simpleNode.data)
+}
+
+func (simpleNode *SimpleNode) GetData() interface{} {
+	return simpleNode.data
 }
 
 func (simpleNode *SimpleNode) GetNextNode() *SimpleNode {

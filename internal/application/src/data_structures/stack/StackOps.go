@@ -1,7 +1,8 @@
 package stack
 
 type StackOps interface {
-	Pop() interface{}
 	Push(interface{})
+	IsEmpty() bool
+	Pop() interface{}
 	Peek() interface{}
 }

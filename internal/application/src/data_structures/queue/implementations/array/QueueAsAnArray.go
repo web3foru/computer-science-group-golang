@@ -1,4 +1,4 @@
-package queue
+package array
 
 type QueueAsAnArray struct {
 	items []interface{}
