@@ -1,7 +1,7 @@
 package queue
 
 import (
-	"github.com/web3foru/computer-science-group-golang/internal/application/src/data_structures/queue/array"
+	"github.com/web3foru/computer-science-group-golang/internal/application/src/data_structures/queue/implementations/array"
 	"testing"
 )
 
