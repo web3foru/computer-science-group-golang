@@ -1,6 +1,6 @@
 package linked_list
 
-func (simpleLinkedList *SimpleLinkedList) isTheEndOfTheList(node *SimpleNode) bool {
+func (simpleLinkedList *SimpleLinkedList) IsTheEndOfTheList(node *SimpleNode) bool {
 	if node == nil {
 		return true
 	} else {
@@ -10,7 +10,7 @@ func (simpleLinkedList *SimpleLinkedList) isTheEndOfTheList(node *SimpleNode) bo
 
 func (simpleLinkedList *SimpleLinkedList) GoToTheEndOfList() *SimpleNode {
 	currentNode := simpleLinkedList.firstNode
-	for !simpleLinkedList.isTheEndOfTheList(currentNode) {
+	for !simpleLinkedList.IsTheEndOfTheList(currentNode) {
 		if currentNode.next == nil {
 			return currentNode
 		}
@@ -27,7 +27,7 @@ func (simpleLinkedList *SimpleLinkedList) GetTheLastTwoNodes() (*SimpleNode, *Si
 		return currentNode, nil
 	} else {
 		nextNode := currentNode.next
-		for !simpleLinkedList.isTheEndOfTheList(nextNode) {
+		for !simpleLinkedList.IsTheEndOfTheList(nextNode) {
 			if nextNode.next == nil {
 				return currentNode, nextNode
 			} else {

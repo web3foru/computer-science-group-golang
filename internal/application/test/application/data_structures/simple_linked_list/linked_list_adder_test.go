@@ -27,4 +27,12 @@ func TestLinkedListAdder(t *testing.T) {
 		}
 	})
 
+	t.Run("Verify last node of a single-node linked list", func(t *testing.T) {
+		singleNodeLinkedList := GetAnSimpleListWithNNodes(100)
+		lastNode := singleNodeLinkedList.GetLastNode()
+		if lastNode.GetData() != 99 {
+			t.Error("Expected last node to not be nil")
+		}
+	})
+
 }

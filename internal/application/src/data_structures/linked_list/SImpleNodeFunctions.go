@@ -16,6 +16,10 @@ func (simpleNode *SimpleNode) GetNextNode() *SimpleNode {
 	return simpleNode.next
 }
 
+func (simpleNode *SimpleNode) UpdateNext(nextNode *SimpleNode) {
+	simpleNode.next = nextNode
+}
+
 func CreateNewNode(data interface{}) *SimpleNode {
 	return &SimpleNode{data: data, next: nil}
 }

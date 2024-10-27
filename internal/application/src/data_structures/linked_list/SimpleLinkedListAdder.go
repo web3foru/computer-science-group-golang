@@ -3,25 +3,37 @@ package linked_list
 func (simpleLinkedList *SimpleLinkedList) AddNodeAtTheBeginning(data interface{}) bool {
 	newNode := CreateNewNode(data)
 	simpleLinkedList.updateElementsAtBeginning(newNode)
+	simpleLinkedList.size++
 	return true
 }
 
 func (simpleLinkedList *SimpleLinkedList) updateElementsAtBeginning(newNode *SimpleNode) {
+	if simpleLinkedList.IsEmpty() {
+		simpleLinkedList.firstNode = newNode
+		simpleLinkedList.lastNode = newNode
+	}
 	newNode.next = simpleLinkedList.firstNode
 	simpleLinkedList.firstNode = newNode
-	simpleLinkedList.size++
 }
 
 func (simpleLinkedList *SimpleLinkedList) AddNodeAtTheEnd(data interface{}) {
 	newNode := CreateNewNode(data)
-	simpleLinkedList.updateElementsAtTheEnd(newNode)
-	simpleLinkedList.size++
+	if simpleLinkedList.IsEmpty() {
+		simpleLinkedList.size = 1
+	} else {
+		simpleLinkedList.size++
+	}
+	simpleLinkedList.ReplaceElementAtTheEnd(newNode)
+}
+
+func (simpleLinkedList *SimpleLinkedList) setUpEmptyList(data interface{}) {
+
 }
 
 func (simpleLinkedList *SimpleLinkedList) InsertAfter(data interface{}, newNodeData interface{}) bool {
 
 	currentNode := simpleLinkedList.firstNode
-	for !simpleLinkedList.isTheEndOfTheList(currentNode) {
+	for !simpleLinkedList.IsTheEndOfTheList(currentNode) {
 		if currentNode.data == data {
 			nextNode := currentNode.next
 			newNode := CreateNewNode(newNodeData)
@@ -35,11 +47,36 @@ func (simpleLinkedList *SimpleLinkedList) InsertAfter(data interface{}, newNodeD
 	return false
 }
 
-func (simpleLinkedList *SimpleLinkedList) updateElementsAtTheEnd(newNode *SimpleNode) {
-	lastNode := simpleLinkedList.GoToTheEndOfList()
-	if lastNode != nil {
-		lastNode.next = newNode
+func (simpleLinkedList *SimpleLinkedList) ReplaceElementAtTheEnd(newNode *SimpleNode) {
+	if simpleLinkedList.IsEmpty() {
+		simpleLinkedList.SetupEmptyList(newNode)
+	} else if newNode == simpleLinkedList.firstNode {
+		newFirstNode := simpleLinkedList.firstNode.next
+		simpleLinkedList.firstNode = newFirstNode
+		previousLastNode := simpleLinkedList.lastNode
+		previousLastNode.next = newNode
+		simpleLinkedList.lastNode = newNode
+		newNode.next = nil
 	} else {
-		simpleLinkedList.firstNode = newNode
+		previousLastNode := simpleLinkedList.GetLastNode()
+		simpleLinkedList.lastNode = newNode
+		previousLastNode.next = newNode
 	}
+
+}
+
+func (simpleLinkedList *SimpleLinkedList) ReplaceElementAtBeginning(newNode *SimpleNode) {
+	if simpleLinkedList.IsEmpty() {
+		simpleLinkedList.SetupEmptyList(newNode)
+	} else {
+		previousFirstNode := simpleLinkedList.firstNode
+		simpleLinkedList.firstNode = newNode
+		newNode.next = previousFirstNode
+	}
+}
+
+func (simpleLinkedList *SimpleLinkedList) SetupEmptyList(newNode *SimpleNode) {
+	simpleLinkedList.firstNode = newNode
+	simpleLinkedList.lastNode = newNode
+	simpleLinkedList.size = 1
 }
