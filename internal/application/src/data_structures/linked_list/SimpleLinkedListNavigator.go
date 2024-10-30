@@ -1,5 +1,7 @@
 package linked_list
 
+import "fmt"
+
 func (simpleLinkedList *SimpleLinkedList) IsTheEndOfTheList(node *SimpleNode) bool {
 	if node == nil {
 		return true
@@ -42,22 +44,18 @@ func (simpleLinkedList *SimpleLinkedList) GetTheLastTwoNodes() (*SimpleNode, *Si
 func (simpleLinkedList *SimpleLinkedList) ReverseList() *SimpleLinkedList {
 	simpleLinkedList.SwapExtremeNodes()
 	if simpleLinkedList.size > 3 {
-		leftNode := simpleLinkedList.firstNode
-		rightNode := simpleLinkedList.lastNode
+		leftNode := simpleLinkedList.firstNode.next
+		rightNode := simpleLinkedList.getNodeBefore(simpleLinkedList.lastNode)
 		for leftNode != rightNode {
-			simpleLinkedList.SwapNodes(leftNode, rightNode)
-			leftNode = leftNode.next
-			rightNode = simpleLinkedList.getNodeBefore(rightNode)
+			leftNode, rightNode = simpleLinkedList.SwapNodes(leftNode, rightNode)
+			fmt.Println(leftNode)
+			fmt.Println(rightNode)
 		}
 	}
 	return simpleLinkedList
 }
 
-func (simpleLinkedList *SimpleLinkedList) SwapNodes(leftNode *SimpleNode, rightNode *SimpleNode) {
-	if simpleLinkedList.GetFirstNode() == leftNode {
-
-	}
-
+func (simpleLinkedList *SimpleLinkedList) SwapNodes(leftNode *SimpleNode, rightNode *SimpleNode) (*SimpleNode, *SimpleNode) {
 	previousLeft := simpleLinkedList.getNodeBefore(leftNode)
 	nextToLeft := leftNode.next
 	previousRight := simpleLinkedList.getNodeBefore(rightNode)
@@ -68,6 +66,7 @@ func (simpleLinkedList *SimpleLinkedList) SwapNodes(leftNode *SimpleNode, rightN
 
 	previousRight.next = leftNode
 	rightNode.next = nextToLeft
+	return nextToLeft, previousRight
 }
 
 func (simpleLinkedList *SimpleLinkedList) SwapExtremeNodes() {

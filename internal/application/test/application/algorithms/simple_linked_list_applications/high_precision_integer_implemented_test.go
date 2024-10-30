@@ -8,7 +8,7 @@ func TestHighPrecisionIntegerOperations(t *testing.T) {
 	t.Run("should reverse a simple linked list", func(t *testing.T) {
 		newLinkedLinkedList := GetAListForReversing()
 		newLinkedLinkedList.ReverseList()
-		if newLinkedLinkedList.GetFirstNode().GetData() != 1 {
+		if newLinkedLinkedList.GetFirstNode().GetData() != 4 {
 			t.Error("list hasn't reversed yet")
 		}
 	})
