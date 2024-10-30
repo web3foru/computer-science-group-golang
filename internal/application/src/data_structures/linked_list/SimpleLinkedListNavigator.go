@@ -70,27 +70,21 @@ func (simpleLinkedList *SimpleLinkedList) SwapNodes(leftNode *SimpleNode, rightN
 }
 
 func (simpleLinkedList *SimpleLinkedList) SwapExtremeNodes() {
+	temporaryFirstNode := simpleLinkedList.GetFirstNode()
+	temporaryLastNode := simpleLinkedList.GetLastNode()
 	if simpleLinkedList.size == 2 {
-		temporaryFirstNode := simpleLinkedList.GetFirstNode()
-		temporaryLastNode := simpleLinkedList.GetLastNode()
-		simpleLinkedList.lastNode = temporaryFirstNode
-		simpleLinkedList.firstNode = temporaryLastNode
 		temporaryLastNode.next = temporaryFirstNode
-		temporaryFirstNode.next = nil
 	} else if simpleLinkedList.size > 2 {
-		temporaryFirstNode := simpleLinkedList.GetFirstNode()
 		nextToFirstNode := temporaryFirstNode.next
-
-		temporaryLastNode := simpleLinkedList.GetLastNode()
 		previousOfLastNode := simpleLinkedList.getNodeBefore(temporaryLastNode)
-
 		temporaryLastNode.next = nextToFirstNode
 		previousOfLastNode.next = temporaryFirstNode
-
-		simpleLinkedList.firstNode = temporaryLastNode
-		simpleLinkedList.lastNode = temporaryFirstNode
-		temporaryFirstNode.next = nil
 	}
+
+	simpleLinkedList.lastNode = temporaryFirstNode
+	simpleLinkedList.firstNode = temporaryLastNode
+	temporaryFirstNode.next = nil
+
 }
 
 func (sll *SimpleLinkedList) getNodeBefore(node *SimpleNode) *SimpleNode {
