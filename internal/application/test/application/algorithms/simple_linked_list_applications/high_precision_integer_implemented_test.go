@@ -28,4 +28,12 @@ func TestHighPrecisionIntegerOperations(t *testing.T) {
 			t.Error("list hasn't swapped yet")
 		}
 	})
+
+	t.Run("Reverse a list optimized", func(t *testing.T) {
+		newLinkedLinkedList := GetAListForReversing()
+		newLinkedLinkedList.ReverseOptimized()
+		if newLinkedLinkedList.GetFirstNode().GetData() != 4 {
+			t.Error("list hasn't reversed yet")
+		}
+	})
 }
