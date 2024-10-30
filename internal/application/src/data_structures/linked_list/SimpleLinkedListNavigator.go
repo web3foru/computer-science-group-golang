@@ -38,3 +38,69 @@ func (simpleLinkedList *SimpleLinkedList) GetTheLastTwoNodes() (*SimpleNode, *Si
 	}
 	return nil, nil
 }
+
+func (simpleLinkedList *SimpleLinkedList) ReverseList() *SimpleLinkedList {
+	simpleLinkedList.SwapExtremeNodes()
+	if simpleLinkedList.size > 3 {
+		leftNode := simpleLinkedList.firstNode
+		rightNode := simpleLinkedList.lastNode
+		for leftNode != rightNode {
+			simpleLinkedList.SwapNodes(leftNode, rightNode)
+			leftNode = leftNode.next
+			rightNode = simpleLinkedList.getNodeBefore(rightNode)
+		}
+	}
+	return simpleLinkedList
+}
+
+func (simpleLinkedList *SimpleLinkedList) SwapNodes(leftNode *SimpleNode, rightNode *SimpleNode) {
+	if simpleLinkedList.GetFirstNode() == leftNode {
+
+	}
+
+	previousLeft := simpleLinkedList.getNodeBefore(leftNode)
+	nextToLeft := leftNode.next
+	previousRight := simpleLinkedList.getNodeBefore(rightNode)
+	nextToRight := rightNode.next
+
+	previousLeft.next = rightNode
+	leftNode.next = nextToRight
+
+	previousRight.next = leftNode
+	rightNode.next = nextToLeft
+}
+
+func (simpleLinkedList *SimpleLinkedList) SwapExtremeNodes() {
+	if simpleLinkedList.size == 2 {
+		temporaryFirstNode := simpleLinkedList.GetFirstNode()
+		temporaryLastNode := simpleLinkedList.GetLastNode()
+		simpleLinkedList.lastNode = temporaryFirstNode
+		simpleLinkedList.firstNode = temporaryLastNode
+		temporaryLastNode.next = temporaryFirstNode
+		temporaryFirstNode.next = nil
+	} else if simpleLinkedList.size > 2 {
+		temporaryFirstNode := simpleLinkedList.GetFirstNode()
+		nextToFirstNode := temporaryFirstNode.next
+
+		temporaryLastNode := simpleLinkedList.GetLastNode()
+		previousOfLastNode := simpleLinkedList.getNodeBefore(temporaryLastNode)
+
+		temporaryLastNode.next = nextToFirstNode
+		previousOfLastNode.next = temporaryFirstNode
+
+		simpleLinkedList.firstNode = temporaryLastNode
+		simpleLinkedList.lastNode = temporaryFirstNode
+		temporaryFirstNode.next = nil
+	}
+}
+
+func (sll *SimpleLinkedList) getNodeBefore(node *SimpleNode) *SimpleNode {
+	nodeRunner := sll.GetFirstNode()
+	for nodeRunner != nil {
+		if node == nodeRunner.next {
+			return nodeRunner
+		}
+		nodeRunner = nodeRunner.next
+	}
+	return nil
+}
