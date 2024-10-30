@@ -9,7 +9,7 @@ func TestHighPrecisionIntegerOperations(t *testing.T) {
 		newLinkedLinkedList := GetAListForReversing()
 		newLinkedLinkedList.ReverseList()
 		if newLinkedLinkedList.GetFirstNode().GetData() != 4 {
-			t.Error("list hasn't reversed yet")
+			t.Error("list hasn't been reversed yet")
 		}
 	})
 
@@ -17,7 +17,7 @@ func TestHighPrecisionIntegerOperations(t *testing.T) {
 		newLinkedLinkedList := GetAListWithTwoNodesForSwaping()
 		newLinkedLinkedList.SwapExtremeNodes()
 		if newLinkedLinkedList.GetFirstNode().GetData() != 1 {
-			t.Error("list hasn't swaped yet")
+			t.Error("list hasn't been swapped yet")
 		}
 	})
 
