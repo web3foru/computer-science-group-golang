@@ -1,19 +1,20 @@
 package linked_list
 
-func (simpleLinkedList *SimpleLinkedList) AddNodeAtTheBeginning(data interface{}) bool {
+func (simpleLinkedList *SimpleLinkedList) AddNodeAtTheBeginning(data interface{}) *SimpleNode {
 	newNode := CreateNewNode(data)
 	simpleLinkedList.updateElementsAtBeginning(newNode)
 	simpleLinkedList.size++
-	return true
+	return newNode
 }
 
 func (simpleLinkedList *SimpleLinkedList) updateElementsAtBeginning(newNode *SimpleNode) {
 	if simpleLinkedList.IsEmpty() {
 		simpleLinkedList.firstNode = newNode
 		simpleLinkedList.lastNode = newNode
+	} else {
+		newNode.next = simpleLinkedList.firstNode
+		simpleLinkedList.firstNode = newNode
 	}
-	newNode.next = simpleLinkedList.firstNode
-	simpleLinkedList.firstNode = newNode
 }
 
 func (simpleLinkedList *SimpleLinkedList) AddNodeAtTheEnd(data interface{}) {

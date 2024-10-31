@@ -84,7 +84,6 @@ func (simpleLinkedList *SimpleLinkedList) SwapExtremeNodes() {
 	simpleLinkedList.lastNode = temporaryFirstNode
 	simpleLinkedList.firstNode = temporaryLastNode
 	temporaryFirstNode.next = nil
-
 }
 
 func (sll *SimpleLinkedList) getNodeBefore(node *SimpleNode) *SimpleNode {
