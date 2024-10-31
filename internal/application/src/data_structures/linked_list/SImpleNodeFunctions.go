@@ -23,3 +23,7 @@ func (simpleNode *SimpleNode) UpdateNext(nextNode *SimpleNode) {
 func CreateNewNode(data interface{}) *SimpleNode {
 	return &SimpleNode{data: data, next: nil}
 }
+
+func (simpleNode *SimpleNode) UpdateData(data interface{}) {
+	simpleNode.data = data
+}

@@ -5,3 +5,7 @@ import "github.com/web3foru/computer-science-group-golang/internal/application/s
 type HighPrecisionInteger struct {
 	numberRepresentation *linked_list.SimpleLinkedList
 }
+
+func (number1 *HighPrecisionInteger) GetLinkedList() *linked_list.SimpleLinkedList {
+	return number1.numberRepresentation
+}
