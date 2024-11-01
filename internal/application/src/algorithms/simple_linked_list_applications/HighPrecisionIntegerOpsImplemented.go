@@ -15,7 +15,21 @@ func (number1 *HighPrecisionInteger) Sum(number2 HighPrecisionInteger) HighPreci
 		secondNumberPointerNode = secondNumberPointerNode.GetNextNode()
 		result.AddNodeAtTheBeginning(dataForInsertion)
 	}
+	for !number1.numberRepresentation.IsTheEndOfTheList(firstNumberPointerNode) {
+		carryOut, dataForInsertion = evaluateSum(firstNumberPointerNode, linked_list.CreateNewNode(0), carryOut)
+		result.AddNodeAtTheBeginning(dataForInsertion)
+		firstNumberPointerNode = firstNumberPointerNode.GetNextNode()
+	}
 
+	for !number2.numberRepresentation.IsTheEndOfTheList(secondNumberPointerNode) {
+		carryOut, dataForInsertion = evaluateSum(linked_list.CreateNewNode(0), secondNumberPointerNode, carryOut)
+		result.AddNodeAtTheBeginning(dataForInsertion)
+		secondNumberPointerNode = secondNumberPointerNode.GetNextNode()
+	}
+	if carryOut.GetData() != 0 {
+		result.AddNodeAtTheBeginning(carryOut.GetData())
+	}
+	result.ReverseList()
 	return HighPrecisionInteger{numberRepresentation: result}
 }
 
