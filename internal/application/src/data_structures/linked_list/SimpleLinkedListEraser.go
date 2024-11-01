@@ -15,7 +15,7 @@ func (simpleLinkedList *SimpleLinkedList) removeNodeAtTheBeginning() bool {
 func (simpleLinkedList *SimpleLinkedList) RemoveNode(data interface{}) bool {
 	previousNode := simpleLinkedList.firstNode
 	currentNode := previousNode.next
-	for !simpleLinkedList.isTheEndOfTheList(currentNode) {
+	for !simpleLinkedList.IsTheEndOfTheList(currentNode) {
 		if currentNode.data == data {
 			return simpleLinkedList.disconnectNodes(currentNode, previousNode)
 		} else {

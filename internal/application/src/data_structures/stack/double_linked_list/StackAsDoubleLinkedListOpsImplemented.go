@@ -36,3 +36,11 @@ func (stack *StackAsDoubleLinkedList) Peek() interface{} {
 		return nil
 	}
 }
+
+func (stack *StackAsDoubleLinkedList) Empty() bool {
+	if stack.size == 0 {
+		return true
+	} else {
+		return false
+	}
+}
