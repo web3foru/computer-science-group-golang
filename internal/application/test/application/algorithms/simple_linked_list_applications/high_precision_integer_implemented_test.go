@@ -39,9 +39,9 @@ func TestHighPrecisionIntegerOperations(t *testing.T) {
 	})
 
 	t.Run("Represent a high precision integer with random numbers", func(t *testing.T) {
-		aBigNumber := 456812359987
+		aBigNumber := 456812359987546345
 		newHPI := simple_linked_list_applications.SetUpHighPrecisionInteger(aBigNumber)
-		if newHPI.GetLinkedList().Size() < 3 {
+		if newHPI.GetLinkedList().Size() < 5 {
 			t.Error("not represented yet")
 		}
 	})

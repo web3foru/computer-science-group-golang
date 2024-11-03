@@ -23,4 +23,13 @@ func TestSumOperations(t *testing.T) {
 			t.Error("Operation wasn't performed successfully")
 		}
 	})
+
+	t.Run("Sum two hpis with a large number", func(t *testing.T) {
+		numberOne := simple_linked_list_applications.SetUpHighPrecisionInteger(19000000)
+		numberTwo := simple_linked_list_applications.SetUpHighPrecisionInteger(1000065466)
+		result := numberTwo.Sum(numberOne)
+		if result.GetLinkedList().Size() != 2 {
+			t.Error("Operation wasn't performed successfully")
+		}
+	})
 }
