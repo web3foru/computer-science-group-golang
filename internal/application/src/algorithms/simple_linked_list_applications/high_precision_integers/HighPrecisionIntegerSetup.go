@@ -1,4 +1,4 @@
-package simple_linked_list_applications
+package high_precision_integers
 
 import "github.com/web3foru/computer-science-group-golang/internal/application/src/data_structures/linked_list"
 
@@ -11,9 +11,9 @@ func SetUpHighPrecisionInteger(n int) HighPrecisionInteger {
 		auxiliaryRepresentation = auxiliaryRepresentation / 10000
 	}
 	auxiliaryList.AddNodeAtTheBeginning(auxiliaryRepresentation)
-	return HighPrecisionInteger{numberRepresentation: auxiliaryList}
+	return HighPrecisionInteger{NumberRepresentation: auxiliaryList}
 }
 
 func (hpi *HighPrecisionInteger) getLinkedList() *linked_list.SimpleLinkedList {
-	return hpi.numberRepresentation
+	return hpi.NumberRepresentation
 }
