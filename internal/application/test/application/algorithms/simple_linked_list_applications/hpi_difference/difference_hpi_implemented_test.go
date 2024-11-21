@@ -47,4 +47,14 @@ func TestDifferenceHighPrecisionInteger(t *testing.T) {
 		}
 	})
 
+	t.Run("subtract a HPI from another, where firsr number is smaller than the second", func(t *testing.T) {
+		n2 := high_precision_integers.SetUpHighPrecisionInteger(1900000000)
+		n1 := high_precision_integers.SetUpHighPrecisionInteger(65466)
+		result := difference_hpi.Subtract(&n1, &n2)
+
+		if result.NumberRepresentation.Size() != 3 && result.NumberRepresentation.GetFirstNode().GetData().(int) > 0 {
+			t.Error("Subtraction has not well performed")
+		}
+	})
+
 }

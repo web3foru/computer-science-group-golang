@@ -8,6 +8,7 @@ import (
 type SubtractionStructure struct {
 	minuend           *high_precision_integers.HighPrecisionInteger
 	subtrahend        *high_precision_integers.HighPrecisionInteger
+	isNegative        bool
 	minuendPointer    *linked_list.SimpleNode
 	subtrahendPointer *linked_list.SimpleNode
 	borrow            int

@@ -8,16 +8,31 @@ import (
 type HPI = high_precision_integers.HighPrecisionInteger
 
 func setUpSubtractionStructure(n1 *HPI, n2 *HPI) *SubtractionStructure {
-	n1.GetLinkedList().ReverseOptimized()
-	n2.GetLinkedList().ReverseOptimized()
 	minuend := n1
 	subtrahend := n2
-	if n1.NumberRepresentation.Size() < n2.NumberRepresentation.Size() {
+	isNegative := false
+
+	if !determineIfFirstNumberIsGreaterThanTheSecond(n1, n2) {
 		minuend = n2
 		subtrahend = n1
+		isNegative = true
 	}
+	n1.GetLinkedList().ReverseOptimized()
+	n2.GetLinkedList().ReverseOptimized()
+
 	result := linked_list.NewLinkedList()
-	return &SubtractionStructure{minuend, subtrahend, n1.GetLinkedList().GetFirstNode(), n2.GetLinkedList().GetFirstNode(), 0, result}
+	return &SubtractionStructure{minuend, subtrahend, isNegative, minuend.GetLinkedList().GetFirstNode(), subtrahend.GetLinkedList().GetFirstNode(), 0, result}
+}
+
+func determineIfFirstNumberIsGreaterThanTheSecond(n1 *HPI, n2 *HPI) bool {
+	numberOfNodesEqual := n1.NumberRepresentation.Size() == n2.NumberRepresentation.Size()
+	valueOfFirstNodeOfFirstNumberGreaterThanTheSecondNumber := n1.NumberRepresentation.GetFirstNode().GetData().(int) > n2.NumberRepresentation.GetFirstNode().GetData().(int)
+	numberOfNodesOfFirstNumberGreaterThanTheSecondNumber := n1.NumberRepresentation.Size() > n2.NumberRepresentation.Size()
+	if (numberOfNodesEqual && valueOfFirstNodeOfFirstNumberGreaterThanTheSecondNumber) || numberOfNodesOfFirstNumberGreaterThanTheSecondNumber {
+		return true
+	} else {
+		return false
+	}
 }
 
 func Subtract(n1 *HPI, n2 *HPI) *HPI {
@@ -26,7 +41,15 @@ func Subtract(n1 *HPI, n2 *HPI) *HPI {
 		subtractUntilOneOfThemComeToTheLast(subtractionStructure)
 	}
 	completeSubtractionForMinuend(subtractionStructure)
+	determineSignOfResult(subtractionStructure)
 	return &HPI{subtractionStructure.result}
+}
+
+func determineSignOfResult(structure *SubtractionStructure) {
+	if structure.isNegative {
+		currentData := structure.result.GetFirstNode().GetData().(int)
+		structure.result.GetFirstNode().UpdateData(currentData * -1)
+	}
 }
 
 func thereAreElementsInTheMinuend(subtractionStructure *SubtractionStructure) bool {
