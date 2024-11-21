@@ -16,4 +16,24 @@ func TestDifferenceHighPrecisionInteger(t *testing.T) {
 			t.Error("Subtraction has not well performed")
 		}
 	})
+
+	t.Run("subtract a HPI from another, both with only one node each, subtrahend is greater", func(t *testing.T) {
+		n1 := high_precision_integers.SetUpHighPrecisionInteger(999)
+		n2 := high_precision_integers.SetUpHighPrecisionInteger(1000)
+		result := difference_hpi.Subtract(&n1, &n2)
+
+		if result.NumberRepresentation.GetFirstNode().GetData().(int) != -1 {
+			t.Error("Subtraction has not well performed")
+		}
+	})
+
+	t.Run("subtract a HPI from another, both with only one node each, subtrahend is greater", func(t *testing.T) {
+		n1 := high_precision_integers.SetUpHighPrecisionInteger(1900000000)
+		n2 := high_precision_integers.SetUpHighPrecisionInteger(1000065466)
+		result := difference_hpi.Subtract(&n1, &n2)
+
+		if result.NumberRepresentation.Size() != 3 {
+			t.Error("Subtraction has not well performed")
+		}
+	})
 }

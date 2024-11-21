@@ -10,6 +10,6 @@ type SubtractionStructure struct {
 	subtrahend        *high_precision_integers.HighPrecisionInteger
 	minuendPointer    *linked_list.SimpleNode
 	subtrahendPointer *linked_list.SimpleNode
-	borrow            *linked_list.SimpleNode
+	borrow            int
 	result            *linked_list.SimpleLinkedList
 }
