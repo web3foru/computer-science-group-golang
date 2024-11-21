@@ -25,14 +25,30 @@ func Subtract(n1 *HPI, n2 *HPI) *HPI {
 	for thereAreElementsInBothIntegers(subtractionStructure) {
 		subtractUntilOneOfThemComeToTheLast(subtractionStructure)
 	}
-
+	completeSubtractionForMinuend(subtractionStructure)
 	return &HPI{subtractionStructure.result}
 }
 
-func finishSubtractionByMinuend(subtractionStructure *SubtractionStructure) {
-	for subtractionStructure.minuendPointer != nil {
+func thereAreElementsInTheMinuend(subtractionStructure *SubtractionStructure) bool {
+	return subtractionStructure.minuendPointer != nil
+}
 
+func completeSubtractionForMinuend(subtractionStructure *SubtractionStructure) {
+	for thereAreElementsInTheMinuend(subtractionStructure) {
+		borrow := subtractionStructure.borrow
+		currentMinuendValue := subtractionStructure.minuendPointer.GetData().(int)
+		currentResult := currentMinuendValue - borrow
+		if currentResult < 0 {
+			borrow = 1
+			currentResult += 10000
+		}
+		subtractionStructure.result.AddNodeAtTheBeginning(currentResult)
+		updateMinuendPinter(subtractionStructure)
 	}
+}
+
+func updateMinuendPinter(structure *SubtractionStructure) {
+	structure.minuendPointer = structure.minuendPointer.GetNextNode()
 }
 
 func thereAreElementsInBothIntegers(subtractionStructure *SubtractionStructure) bool {
