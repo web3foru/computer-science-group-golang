@@ -15,4 +15,13 @@ func TestMultiplicationHPI(t *testing.T) {
 			t.Error("multiplication has not implemented yer")
 		}
 	})
+
+	t.Run("multiplication with two nodes result", func(t *testing.T) {
+		n1 := high_precision_integers.SetUpHighPrecisionInteger(999)
+		n2 := high_precision_integers.SetUpHighPrecisionInteger(100)
+		result := multiplication_hpi.Multiply(&n1, &n2)
+		if result.NumberRepresentation.Size() != 2 {
+			t.Error("multiplication has not implemented yer")
+		}
+	})
 }

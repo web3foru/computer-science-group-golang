@@ -24,6 +24,9 @@ func Multiply(a, b *HPI) *HPI {
 		firstNumberPointer = firstNumberPointer.GetNextNode()
 		currentOffset++
 	}
+	if carryOut != 0 {
+		result.AddNodeAtTheBeginning(carryOut)
+	}
 	return &HPI{result}
 }
 
