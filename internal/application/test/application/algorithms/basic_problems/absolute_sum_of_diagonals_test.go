@@ -1,8 +1,9 @@
 package basic_problems
 
 import (
-	"github.com/web3foru/computer-science-group-golang/internal/application/src/algorithms/basic_problems"
 	"testing"
+
+	"github.com/web3foru/computer-science-group-golang/internal/application/src/algorithms/basic_problems"
 )
 
 func TestAbsoluteSumOfDigonal(t *testing.T) {

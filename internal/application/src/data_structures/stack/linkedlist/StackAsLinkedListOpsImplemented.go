@@ -24,3 +24,7 @@ func (stack *StackAsLinkedList) Pop() interface{} {
 		return lastElementOfStack.GetData()
 	}
 }
+
+func (stack *StackAsLinkedList) Peek() interface{} {
+	return stack.items.GetLastNode()
+}
